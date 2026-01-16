@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>Search Results - Neziah Contractors Limited</title>
+
+    <!-- Fav Icon -->
+    <link rel="icon" href="assets\logo-fotor.png" type="image/x-icon">
+
+    <!-- Google Fonts (same as your other pages) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Your existing stylesheets -->
+    <link href="assets/css/font-awesome-all.css" rel="stylesheet">
+    <link href="assets/css/flaticon.css" rel="stylesheet">
+    <link href="assets/css/owl.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/timePicker.css" rel="stylesheet">
+    <link href="assets/css/jquery-ui.css" rel="stylesheet">
+    <link href="assets/css/nice-select.css" rel="stylesheet">
+    <link href="assets/css/elpath.css" rel="stylesheet">
+    <link href="assets/css/color.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Your header (copy from index.html or any page) -->
+    <header class="main-header header-style-one">
+        <!-- paste your full header code here - navigation, logo, etc. -->
+        <!-- ... -->
+    </header>
+
+    <!-- Search Results Section -->
+    <section class="search-results-section pt-120 pb-100">
+        <div class="auto-container">
+            <div class="sec-title centred">
+                <span class="sub-title">Search Results</span>
+                <h2>Results for: <span id="search-term-display">"Loading..."</span></h2>
+            </div>
+
+            <div class="result-stats mb-40">
+                <p id="result-count">Searching...</p>
+            </div>
+
+            <div class="row clearfix" id="results-container">
+                <!-- Results will be injected here by JavaScript -->
+            </div>
+
+            <div id="no-results-message" class="text-center mt-5" style="display: none;">
+                <h3>No results found</h3>
+                <p>Try searching for terms like "civil works", "epoxy flooring", "terrazzo", "water proofing", "eco
+                    kitchen" or project names.</p>
+                <a href="index.html" class="theme-btn btn-one mt-3"><span>Back to Home</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Your footer (copy from other pages) -->
+    <footer class="main-footer">
+        <!-- paste your footer code here -->
+        <!-- ... -->
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <i class="flaticon-down-arrow"></i>
+    </button>
+
+    <!-- Your existing scripts -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/jquery.fancybox.js"></script>
+    <script src="assets/js/appear.js"></script>
+    <script src="assets/js/scrollbar.js"></script>
+    <script src="assets/js/isotope.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/nav-tool.js"></script>
+    <script src="assets/js/parallax-scroll.js"></script>
+    <script src="assets/js/timePicker.js"></script>
+    <script src="assets/js/jquery-ui.js"></script>
+    <script src="assets/js/script.js"></script>
+
+    <!-- Search logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q')?.trim().toLowerCase() || '';
+
+            document.getElementById('search-term-display').textContent = query || '(no keyword)';
+
+            if (!query) {
+                document.getElementById('no-results-message').style.display = 'block';
+                document.getElementById('result-count').textContent = 'No search term entered.';
+                return;
+            }
+
+            // === All searchable content (services + projects) ===
+            const searchableContent = [
+                // Services
+                {
+                    title: "Building & Construction",
+                    description: "Expert building and construction services for residential and commercial properties.",
+                    url: "service-details-3.html",
+                    keywords: ["building", "construction", "house", "residential", "commercial"]
+                },
+                {
+                    title: "Civil Works",
+                    description: "High-quality civil works, infrastructure, roads, drainage and related solutions.",
+                    url: "service-details-2.html",
+                    keywords: ["civil", "civil works", "infrastructure", "road", "drainage"]
+                },
+                {
+                    title: "Terrazzo Work",
+                    description: "Premium terrazzo flooring, durable and beautiful surfaces.",
+                    url: "service-details-4.html",
+                    keywords: ["terrazzo", "terrazzo work", "flooring"]
+                },
+                {
+                    title: "Epoxy Flooring",
+                    description: "Seamless, high-performance epoxy flooring for garages, warehouses, showrooms.",
+                    url: "service-details-4.html",
+                    keywords: ["epoxy", "epoxy flooring", "garage floor", "industrial floor"]
+                },
+                {
+                    title: "Water Proofing",
+                    description: "Professional waterproofing for roofs, basements, walls and structures.",
+                    url: "service-details-5.html",
+                    keywords: ["waterproofing", "water proofing", "leak proof", "roof waterproof"]
+                },
+                {
+                    title: "Eco Kitchen Construction",
+                    description: "Sustainable, eco-friendly kitchen builds with environmental focus.",
+                    url: "service-details-6.html",
+                    keywords: ["eco kitchen", "eco kitchen construction", "sustainable kitchen"]
+                },
+                {
+                    title: "Environmental Solutions",
+                    description: "Sustainable construction practices and environmental concern solutions.",
+                    url: "service-details-7.html",
+                    keywords: ["environmental", "environmental solutions", "sustainable", "eco friendly"]
+                },
+                {
+                    title: "Project Execution",
+                    description: "Successfully completed projects – view our portfolio.",
+                    url: "service-details-8.html",
+                    keywords: ["project execution", "projects", "portfolio"]
+                },
+
+                // === Add your real projects here ===
+                {
+                    title: "Residential House Construction",
+                    description: "Modern 4-bedroom house with high-quality finishes.",
+                    url: "project-2.html",
+                    keywords: ["house", "residential", "building"]
+                },
+                {
+                    title: "Civil Works – Drainage & Road",
+                    description: "Civil infrastructure including drainage systems and access roads.",
+                    url: "project-2.html",
+                    keywords: ["civil", "drainage", "road"]
+                },
+                {
+                    title: "Epoxy Flooring Project",
+                    description: "Durable epoxy coating for commercial space.",
+                    url: "project-2.html",
+                    keywords: ["epoxy", "flooring"]
+                },
+                {
+                    title: "Terrazzo Office Flooring",
+                    description: "Elegant terrazzo installation in office building.",
+                    url: "project-2.html",
+                    keywords: ["terrazzo", "office flooring"]
+                },
+                // Add 10–20 more real projects with accurate titles, short descriptions and correct URLs
+                // Example format:
+                // { title: "Your Project Name", description: "Short description...", url: "your-project-page.html", keywords: ["keyword1", "keyword2"] },
+            ];
+
+            // Filter matching items
+            const matches = searchableContent.filter(item =>
+                item.title.toLowerCase().includes(query) ||
+                item.description.toLowerCase().includes(query) ||
+                item.keywords.some(kw => kw.toLowerCase().includes(query))
+            );
+
+            const container = document.getElementById('results-container');
+            container.innerHTML = '';
+
+            if (matches.length === 0) {
+                document.getElementById('no-results-message').style.display = 'block';
+                document.getElementById('result-count').textContent = 'No matching services or projects found.';
+            } else {
+                matches.forEach(item => {
+                    const card = `
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                            <div class="project-block-one">
+                                <div class="inner-box">
+                                    <h4><a href="${item.url}">${item.title}</a></h4>
+                                    <p>${item.description.substring(0, 110)}${item.description.length > 110 ? '...' : ''}</p>
+                                    <a href="${item.url}" class="read-more">View Details <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += card;
+                });
+
+                document.getElementById('result-count').textContent =
+                    `Found ${matches.length} result${matches.length !== 1 ? 's' : ''}`;
+            }
+        });
+    </script>
+</body>
+
+</html>
