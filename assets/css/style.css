@@ -1818,12 +1818,27 @@
    margin-left: -120px;
  }
 
+ /* Default for Desktop */
  .banner-section .content-box h2 {
    display: block;
    font-size: 67px;
-   line-height: 77px;
+   line-height: 1.1;
+   /* Use a relative unit for better scaling */
    color: #fff;
    font-weight: 900;
+   word-wrap: break-word;
+   /* Prevents long words from breaking layout */
+ }
+
+ /* For Small Phones (max-width: 480px) */
+ @media (max-width: 480px) {
+   .banner-section .content-box h2 {
+     font-size: 36px;
+     /* Reduced for mobile */
+     line-height: 42px;
+     padding: 0 15px;
+     /* Adds breathing room on the sides */
+   }
  }
 
  .banner-section .content-box .special-text {
@@ -1838,6 +1853,30 @@
    -webkit-text-stroke-color: rgba(255, 255, 255, 0.60);
    min-height: 120px;
    margin-bottom: 23px;
+ }
+
+ /* Tablet and Desktop stays at 120px (your existing code) */
+
+ /* Mobile Specific Fix */
+ @media (max-width: 480px) {
+   .banner-section .content-box .special-text {
+     font-size: 40px !important;
+     /* Much smaller to fit "Construction" */
+     line-height: 44px !important;
+     /* Adjusted for the new font size */
+     min-height: 44px !important;
+     /* Prevents huge gaps between sections */
+     -webkit-text-stroke-width: 1px;
+     /* Slightly thicker stroke makes small text readable */
+     margin-bottom: 15px;
+     /* Reduced spacing for mobile */
+   }
+
+   /* Optional: Adjust the 'Professional Solutions For' header size too */
+   .banner-section .content-box h2 {
+     font-size: 32px !important;
+     line-height: 38px !important;
+   }
  }
 
  .banner-section .content-box p {
@@ -9045,7 +9084,7 @@
  .service-sidebar .download-widget a span:before {
    position: absolute;
    content: '';
-   background-image: url(../images/icons/icon-104.png);
+   background-image: url(../images/icons/icon-105.png);
    width: 22px;
    height: 20px;
    top: 2px;
