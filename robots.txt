@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /search-results.html
+
+Sitemap: https://neziahcontractorsltd.com/sitemap.xml
