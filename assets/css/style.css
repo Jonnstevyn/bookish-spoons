@@ -2593,6 +2593,7 @@
 
 
  /** contact-section **/
+/** contact-section **/
 
  .contact-section {
    position: relative;
@@ -2655,7 +2656,9 @@
    position: relative;
    display: inline-block;
    margin-top: 8px;
-   padding: 6px 0px 8px 96px;
+   /* Reduced left padding from 96px to 75px to pull text left */
+   padding: 6px 0px 8px 75px;
+   max-width: 100%;
  }
 
  .content_block_three .content-box .support-box .thumb-box {
@@ -2688,6 +2691,21 @@
    color: #fff;
    font-weight: 600;
  }
+
+ /* --- Integrated Fixes --- */
+ .content_block_three .content-box .support-box a small,
+ .content_block_three .content-box .support-box small {
+   display: block;
+   font-size: 13px; /* Slightly smaller to ensure fit */
+   line-height: 20px;
+   color: #ffffff; /* Sets Facebook text to white */
+   word-break: break-all; 
+ }
+
+ .content_block_three .content-box .support-box a:has(small) {
+   font-size: inherit;
+ }
+ /* --- End Fixes --- */
 
  .content_block_three .content-box .support-box a:hover {}
 
@@ -2733,7 +2751,6 @@
    width: 100%;
    padding: 13px 31px;
  }
-
 
  /** news-section **/
 
